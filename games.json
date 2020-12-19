@@ -1,0 +1,62 @@
+{
+  "4": {
+    "name": "The Forest",
+    "img": "assets/background/The Forest.png"
+  },
+  "for": {
+    "name": "The Forest",
+    "img": "assets/background/The Forest.png"
+  },
+  "forest": {
+    "name": "The Forest",
+    "img": "assets/background/The Forest.png"
+  },
+  "cs": {
+    "name": "CS:GO",
+    "img": "assets/background/CSGO.png"
+  },
+  "csgo": {
+    "name": "CS:GO",
+    "img": "assets/background/CSGO.png"
+  },
+  "cs:go": {
+    "name": "CS:GO",
+    "img": "assets/background/CSGO.png"
+  },
+  "civ": {
+    "name": "Civ",
+    "img": "assets/background/Civ.png"
+  },
+  "green hell": {
+    "name": "Green Hell",
+    "img": "assets/background/Green Hell.png"
+  },
+  "league": {
+    "name": "League",
+    "img": "assets/background/League.png"
+  },
+  "tf2": {
+    "name": "TF2",
+    "img": "assets/background/TF2.png"
+  },
+  "valorant": {
+    "name": "Valorant",
+    "img": "assets/background/Valorant.png"
+  },
+  "dnd": {
+    "name": "DND",
+    "img": "assets/background/DND.png"
+  },
+  "among us": {
+    "name": "Among Us",
+    "img": "assets/background/Among Us.png"
+  },
+  "bedwars": {
+    "name": "Bedwars",
+    "img": "assets/background/Bedwars.png"
+  },
+  "bed wars": {
+    "name": "Bedwars",
+    "img": "assets/background/Bedwars.png"
+  }
+}

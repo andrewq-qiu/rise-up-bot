@@ -1,0 +1,9 @@
+{
+  "token": "REPLACE_WITH_TOKEN",
+  "cache_channel": REPLACE_WITH_INT,
+  "wkhtmltoimage": "/wkhtmltopdf/bin/wkhtmltoimage.exe",
+  "wkhtmltoimage_is_relative": 1,
+  "timezone": "US/Pacific",
+  "close_rise_delay": 10800,
+  "bot_commands_url": "REPLACE_WITH_URL"
+}
