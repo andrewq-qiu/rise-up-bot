@@ -230,7 +230,7 @@ class Card:
             to_send += f'<@{str(player.id)}> '
 
         target_time = datetime_to_short_str(self.target_time)
-        to_send += f'\n{target_time} Reminder.'
+        to_send += f'\n{target_time} reminder.'
 
         await self.message.channel.send(to_send)
 

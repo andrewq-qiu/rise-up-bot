@@ -1,8 +1,6 @@
 """Module for initializing and handling
 interactions for the rise up bot
 on discord.
-
-
 """
 
 
