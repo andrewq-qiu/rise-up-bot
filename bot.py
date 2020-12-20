@@ -46,7 +46,6 @@ async def _rise_up(ctx: SlashContext, game_name: str, time_str: str, slots: int)
         return
 
     author_id = str(ctx.author.id)
-    print(ctx.command_id, ctx.interaction_id)
 
     if author_id in gv.CARDS:
         # Card already exists
