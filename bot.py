@@ -79,6 +79,8 @@ async def _change_time(ctx: SlashContext, time_str: str) -> None:
             my_card.target_time = time
             await my_card.update()
             await my_card.update_timers()
+            await ctx.send(content=f'You have changed the time for the {my_card.game.name}'
+                                   f'rise up to {rise_up.datetime_to_short_str(time)}.')
 
     else:
         await ctx.send(content="You don't have an active rise.")
@@ -110,7 +112,7 @@ async def _close(ctx: SlashContext) -> None:
 
 @slash.subcommand(base="force", name="setup")
 async def _force_setup(ctx: SlashContext) -> None:
-    """This function handles closing an active rise.
+    """This function handles forcing a setup of the bot on a guild.
     """
 
     # Check Bot Channels
@@ -132,19 +134,42 @@ async def _force_setup(ctx: SlashContext) -> None:
     gv.GUILD_DATA[str(guild.id)] = {"rise_up_channel": int(rise_up_channel.id)}
     gv.save_to_json(gv.GUILD_DATA, "guild_data.json")
 
+    await ctx.send(content='The bot has successfully setup.')
+
 
 @slash.slash(name="usurp")
 async def _usurp(ctx: SlashContext, user: discord.Member) -> None:
     """This function handles usurping an active rise.
     """
+    user_id = str(user.id)
 
-    if user in gv.CARDS:
-        my_card = gv.CARDS[user]
-        my_card.author = ctx.author
-        my_card.update()
+    if user_id in gv.CARDS:
+        my_card = gv.CARDS[user_id]
+        my_card.change_author(user)
+
+        await ctx.send(content=f'You have successfully stolen a rise from <@{user_id}>')
 
     else:
         await ctx.send(content="The targeted user does not have a rise.")
+
+
+@slash.slash(name="give")
+async def _give(ctx: SlashContext, user: discord.Member) -> None:
+    """This function handles giving a rise to another user.
+    """
+
+    user_id = str(user.id)
+    author_id = str(ctx.author.id)
+
+    if user_id in gv.CARDS:
+        await ctx.send(content='The target user already has a rise!')
+    elif author_id in gv.CARDS:
+        my_card = gv.CARDS[author_id]
+        my_card.change_author(user)
+
+        await ctx.send(content=f'You have successfully given your rise to <@{user_id}>')
+    else:
+        await ctx.send(content="You don't have a rise to give!")
 
 
 @CLIENT.event

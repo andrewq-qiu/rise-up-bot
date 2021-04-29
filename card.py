@@ -203,6 +203,22 @@ class Card:
         if self.forwarded_message is not None:
             await self.forwarded_message.edit(content=image_url)
 
+    def change_author(self, author: discord.Member):
+        """Change the author of the rise and update gv.CARDS
+        and gv.CARD_MESSAGES
+        """
+        old_author_id = str(self.author.id)
+        author_id = str(author.id)
+
+        del gv.CARDS[old_author_id]
+        gv.CARDS[author_id] = self
+
+        gv.CARD_MESSAGES[str(self.message.id)] = author_id
+        gv.CARD_MESSAGES[str(self.forwarded_message.id)] = author_id
+
+        self.author = author
+        self.update()
+
     async def update_timers(self):
         """Updates the timers after the card's time has changed."""
 

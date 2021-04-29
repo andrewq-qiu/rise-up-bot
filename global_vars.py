@@ -13,7 +13,8 @@ Global Variables:
     - IMGKIT_CONFIG: the imgkit config storing the wkhtmltopdf path
 """
 
-from typing import Optional
+from __future__ import annotations
+from typing import Optional, Dict
 import datetime
 import json
 import os
@@ -21,6 +22,7 @@ import discord
 import imgkit
 import asyncio
 import pytz
+from card import Card
 
 
 from discord.ext import commands
@@ -129,9 +131,13 @@ GUILD_DATA = load_json("guild_data.json")
 pytz.utc.localize(datetime.datetime.utcnow()).astimezone(pytz.timezone('US/Pacific'))
 TIMEZONE = pytz.timezone(PROPERTIES["timezone"])
 
+# Dict mapping message ids to the author of the relevant rise.
 CARD_MESSAGES = {}
+# Dict mapping author ids to the card of the relevant rise.
 CARDS = {}
 
+CARD_MESSAGES: Dict[str, str]
+CARDS: Dict[str, Card]
 
 CACHE_CHANNEL = None
 

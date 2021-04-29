@@ -104,15 +104,29 @@ usurp_json = {
     ]
 }
 
+give_json = {
+    "name": "give",
+    "description": "Give your rise to another user.",
+    "options": [
+        {
+            "name": "user",
+            "description": "The user to give the rise to.",
+            "type": 6,
+            "required": True
+        }
+    ]
+}
+
 
 headers = {
     "Authorization": f"Bot {PROPERTIES['token']}"
 }
 
 # Send Requests to Add Commands To Server
-r1 = requests.post(url, headers=headers, json=rise_up_json)
-r2 = requests.post(url, headers=headers, json=change_time_json)
-r3 = requests.post(url, headers=headers, json=cancel_json)
-r4 = requests.post(url, headers=headers, json=close_json)
-r5 = requests.post(url, headers=headers, json=force_setup_json)
-r6 = requests.post(url, headers=headers, json=usurp_json)
+# r1 = requests.post(url, headers=headers, json=rise_up_json)
+# r2 = requests.post(url, headers=headers, json=change_time_json)
+# r3 = requests.post(url, headers=headers, json=cancel_json)
+# r4 = requests.post(url, headers=headers, json=close_json)
+# r5 = requests.post(url, headers=headers, json=force_setup_json)
+# r6 = requests.post(url, headers=headers, json=usurp_json)
+r7 = requests.post(url, headers=headers, json=give_json)
