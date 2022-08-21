@@ -22,7 +22,7 @@ import discord
 import imgkit
 import asyncio
 import pytz
-from card import Card
+from card import RiseUp
 
 
 from discord.ext import commands
@@ -137,7 +137,7 @@ CARD_MESSAGES = {}
 CARDS = {}
 
 CARD_MESSAGES: Dict[str, str]
-CARDS: Dict[str, Card]
+CARDS: Dict[str, RiseUp]
 
 CACHE_CHANNEL = None
 

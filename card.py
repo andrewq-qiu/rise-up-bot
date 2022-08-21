@@ -1,4 +1,4 @@
-"""Module containing the Card class. Contains methods
+"""Module containing the RiseUp class. Contains methods
 for representing a rise up card and handling its
 creation, interaction, and deletion.
 """
@@ -8,7 +8,7 @@ from functools import cmp_to_key
 from dataclasses import dataclass
 import discord
 import imgkit
-from rise_up import *
+from process_commands import *
 import global_vars as gv
 
 
@@ -31,8 +31,8 @@ class AvailabilityType:
     status: str
 
 
-class Card:
-    """A class representing a Rise Up card.
+class RiseUp:
+    """A class representing a rise up.
 
     Instance Attributes:
         - target_time: the targeted time for the rise
@@ -80,7 +80,7 @@ class Card:
         self.delete_timer = gv.Timer(delete_time_seconds, self.close)
 
     def render_to_file(self, path: str = 'card.png'):
-        """Render the Card from the HTML template into
+        """Render the Rise Up from the HTML template into
         an image. Store the image into the given path.
         """
 
@@ -142,7 +142,7 @@ class Card:
         imgkit.from_file("card.html", path, config=gv.IMGKIT_CONFIG, options=options)
 
     async def send(self):
-        """Send the Card to the cache, target, and forwarding (rise up)
+        """Send the RiseUp to the cache, target, and forwarding (rise up)
         channel and update the global variables.
         """
 
@@ -163,7 +163,7 @@ class Card:
         guild_id = str(self.guild.id)
         author_id = str(self.author.id)
 
-        # Add Card to the Global Variables
+        # Add RiseUp to the Global Variables
         gv.CARD_MESSAGES[str(self.message.id)] = author_id
         gv.CARDS[author_id] = self
 

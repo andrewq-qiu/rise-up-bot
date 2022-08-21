@@ -14,7 +14,7 @@ from discord_slash import SlashCommand
 from discord_slash.model import SlashContext
 
 import card
-import rise_up
+import process_commands
 
 
 CLIENT = gv.CLIENT
@@ -38,8 +38,8 @@ async def _rise_up(ctx: SlashContext, game_name: str, time_str: str, slots: int)
     """This function handles the !rise up command.
     """
 
-    game = rise_up.get_game(game_name)
-    time = rise_up.get_datetime_from_time_str(time_str)
+    game = process_commands.get_game(game_name)
+    time = process_commands.get_datetime_from_time_str(time_str)
 
     if time is None:
         await ctx.send(content='You did not specify a valid time. Try something like this: 5pm, 9:01am.')
@@ -48,12 +48,12 @@ async def _rise_up(ctx: SlashContext, game_name: str, time_str: str, slots: int)
     author_id = str(ctx.author.id)
 
     if author_id in gv.CARDS:
-        # Card already exists
-        # Delete Old Card
+        # RiseUp already exists
+        # Delete Old RiseUp
         print("> User initiated a new card while an old card is still active! Closing previous card...")
         await gv.CARDS[author_id].close()
 
-    new_card = card.Card(
+    new_card = card.RiseUp(
         target_time=time, game=game, slots=slots, author=ctx.author, channel=ctx.channel, ctx=ctx)
 
     await new_card.send()
@@ -66,7 +66,7 @@ async def _change_time(ctx: SlashContext, time_str: str) -> None:
     """
 
     user_id = str(ctx.author.id)
-    time = rise_up.get_datetime_from_time_str(time_str)
+    time = process_commands.get_datetime_from_time_str(time_str)
 
     if user_id in gv.CARDS:
         if time is None:
@@ -80,7 +80,7 @@ async def _change_time(ctx: SlashContext, time_str: str) -> None:
             await my_card.update()
             await my_card.update_timers()
             await ctx.send(content=f'You have changed the time for the {my_card.game.name}'
-                                   f'rise up to {rise_up.datetime_to_short_str(time)}.')
+                                   f'rise up to {process_commands.datetime_to_short_str(time)}.')
 
     else:
         await ctx.send(content="You don't have an active rise.")
