@@ -51,11 +51,6 @@ def get_next_time(hour: int, minute: int):
     return target
 
 
-def datetime_to_short_str(date_time: datetime.datetime):
-    hour = (((date_time.hour - 1) % 12) + 1)
-    return str(hour) + date_time.strftime(':%M%p').lower()
-
-
 def get_game(game_name: str) -> Game:
     """Return a Game instance containing
     the full game name and image path

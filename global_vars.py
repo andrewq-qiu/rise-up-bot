@@ -22,7 +22,7 @@ import discord
 import imgkit
 import asyncio
 import pytz
-from card import RiseUp
+from rise_up import RiseUp
 
 
 from discord.ext import commands

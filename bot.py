@@ -13,7 +13,7 @@ from discord.ext import commands
 from discord_slash import SlashCommand
 from discord_slash.model import SlashContext
 
-import card
+import rise_up
 import process_commands
 
 
@@ -53,7 +53,7 @@ async def _rise_up(ctx: SlashContext, game_name: str, time_str: str, slots: int)
         print("> User initiated a new card while an old card is still active! Closing previous card...")
         await gv.CARDS[author_id].close()
 
-    new_card = card.RiseUp(
+    new_card = rise_up.RiseUp(
         target_time=time, game=game, slots=slots, author=ctx.author, channel=ctx.channel, ctx=ctx)
 
     await new_card.send()
@@ -240,7 +240,7 @@ async def on_reaction_add(reaction, user):
 
     if user_id not in gv.CARDS[author_id].players_availability_type:
         gv.CARDS[author_id].players_availability_type[user_id] \
-            = card.AvailabilityType(datetime.datetime.now(), status)
+            = rise_up.AvailabilityType(datetime.datetime.now(), status)
     else:
         gv.CARDS[author_id].players_availability_type[user_id].status = status
 
