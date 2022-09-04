@@ -1,0 +1,133 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body><div class="main">
+        <div class='main-image'></div>
+        <div class='main-text-container'>
+            <p class='title-name'>|sender_name|</p>
+            <p class='message'>wants to play |game_name| @ |game_time|</p>
+        </div>
+        <p class='availability-list-title'>Available:</p>
+        <p class='slots'>|player_count|/|slots|</p>
+        <div class='players'>|available_list|</div>
+        <p class='availability-list-title'>Unavailable:</p>
+        <div class='players'>|unavailable_list|</div>
+        <img src='assets/check.png' class='react-icon'>
+        <p class='available-text'>React: <b>Available</b></p><br><br>
+        <img src='assets/clock.png' class='react-icon'>
+        <p class='available-text'>React: <b>Late</b></p><br><br>
+        <img src='assets/x.png' class='react-icon'>
+        <p class='available-text'>React: <b>Unavailable</b></p>
+    </div></body>
+    
+</html>
+
+<style>
+    body{
+        margin: 0;
+    }
+
+    *{
+        font-family: 'Open Sans', sans-serif;
+        color: white;
+    }
+
+    .main{
+        background: url("|game_img|") no-repeat;
+        background-position: left top;
+        width: 330px;
+        background-color: black;
+        padding: 35px;
+    }
+
+    .main-image{
+        width: 92px;
+        height: 92px;
+        border-radius: 50%;
+        background: url("|sender_img|") center;
+        background-size: 92px 92px;
+    }
+
+    .main-text-container{
+        position: absolute;
+        top: 0;
+        left: 125px;
+        width: 205px;
+        padding: 35px;
+        height: 92px;
+    }
+
+    .title-name{
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 250px;
+    }
+
+    .message{
+        margin: 0;
+    }
+
+    .availability-list-title{
+        font-size: 25px;
+    }
+
+    .slots{
+        font-size: 35px;
+        margin-top: -67px;
+        float:right;
+    }
+
+    .players{
+        margin-top: -10px;
+        margin-bottom: 30px;
+    }
+
+    .player{
+        height: 25px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .player-image{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: url("assets/andrew_keyboard.png") center;
+        background-size: 25px 25px;
+        vertical-align: middle;
+    }
+
+    .player-name{
+        display: inline;
+        vertical-align: middle;
+        margin-left: 7px;
+    }
+
+    .react-icon{
+        width: 35px;
+        height: 35px;
+        vertical-align: middle;
+    }
+
+    .available-text{
+        font-size: 20px;
+        display: inline;
+        margin-left: 20px;
+        padding-bottom: 20px;
+    }
+
+    .small-icon{
+        width: 25px;
+        height: 25px;
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+
+
+
+</style>
